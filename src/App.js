@@ -1,23 +1,30 @@
-import logo from './logo.svg';
 import './App.css';
 
+import Main from "./components/Main";
+
+//import the hook
+import { useToggle } from './hooks/toggleHook';
+
+
 function App() {
+
+  const {isVisible, handleToggle } = useToggle(false);
+
+  /**
+   *  Use the handleToggle to change the value 
+   *  inside the state of the custom toggle hook
+   *  and use the returned state from it
+   *  to make the functionality work on this component 
+   */
+
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+
+      <button onClick={() => handleToggle()}>Toggle Component</button>
+
+      {!isVisible && <Main/>}
+     
     </div>
   );
 }
